@@ -1,6 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> fdcc113 (Merged with remote main and resolved conflicts)
 # laravel_sipos_backend
@@ -81,3 +79,6 @@ Test Push Branch Development
 >>>>>>> d4af020 (Initial commit)
 =======
 >>>>>>> fdcc113 (Merged with remote main and resolved conflicts)
+
+
+Test Push Branch Development
