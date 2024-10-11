@@ -70,6 +70,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 >>>>>>> f7b138b (Initial commit: setup Laravel project)
 
 
-Test Push Branch Development 1
-
-Test Push Branch Baru Development Lagi
+Test push code program
