@@ -36,6 +36,8 @@
 
                
                         <div class="card">
+                            <form action="{{route('user.store')}}" method="POST"> 
+                                @csrf
                             <div class="card-header">
                                 <h4>Input Text</h4>
                             </div>
@@ -109,9 +111,11 @@
         
                                         </div>
                             </div>
+                        
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary">Submit</button>
                             </div>
+                        </form> 
                         </div>
                         
                 </div>
