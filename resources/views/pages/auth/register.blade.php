@@ -48,8 +48,16 @@
 
                 <div class="form-group">
                     <label for="password2">Password Confirmation</label>
-                    <input id="password2" type="password" class="form-control" name="password_confirmation">
+                    <input id="password2" type="password" class="form-control @error('password')
+                        is-invalid
+                    @enderror" name="password_confirmation">
                 </div>
+                @error('password_confirmation')
+                <div class ="Invalid-feedback">
+                    {{$message}}
+                </div>
+                    
+                @enderror
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
