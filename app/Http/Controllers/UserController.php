@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index(){
-        // Mengambil data user dan mempaginasinya
-        $users = \App\Models\User::paginate(10); // Menggunakan nama variabel $users
-        return view('pages.users.index', compact('users')); // Menggunakan compact('users')
+    public function index(Request $request){
+    // Menggunakan query builder dengan when dan paginate
+        $users = DB::table('users')
+        ->when($request->input('name'), function ($query, $name) {
+            return $query->where('name', 'like', '%' . $name . '%');
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(10);
+
+      return view('pages.users.index', compact('users'));
+       
     }
 }
