@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-        return view('pages.users.index');
+        // Mengambil data user dan mempaginasinya
+        $users = \App\Models\User::paginate(10); // Menggunakan nama variabel $users
+        return view('pages.users.index', compact('users')); // Menggunakan compact('users')
     }
 }
