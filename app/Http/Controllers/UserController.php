@@ -32,4 +32,11 @@ class UserController extends Controller
         \App\Models\User::create($data);
         return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');
     }
+
+    public function edit($id)
+    {
+        $user = \App\Models\User::findOrFail($id);
+        return view('pages.users.edit', compact('user'));
+    }
+
 }
