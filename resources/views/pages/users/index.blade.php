@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Posts')
+@section('title', 'Users')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -12,7 +12,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Posts</h1>
+                <h1>All Users</h1>
                 <div class="section-header-button">
                     <a href="features-post-create.html"
                         class="btn btn-primary">Add New</a>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="section-body">
-                <h2 class="section-title">Posts</h2>
+                <h2 class="section-title">User</h2>
                 <p class="section-lead">
                     You can manage all posts, such as editing, deleting and more.
                 </p>
@@ -32,26 +32,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card mb-0">
-                            <div class="card-body">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a class="nav-link active"
-                                            href="#">All <span class="badge badge-white">5</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            href="#">Draft <span class="badge badge-primary">1</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            href="#">Pending <span class="badge badge-primary">1</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                            href="#">Trash <span class="badge badge-primary">0</span></a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
