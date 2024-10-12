@@ -25,7 +25,7 @@ class StoreUserRequets extends FormRequest
             'name' => 'required|max:100|min:3',
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric',
-            'roles' => 'required|in:ADMIN,STAFF,USER',
+            'roles' => 'required|in:admin,staff,user',
             'password' => 'required|min:8'
         ];
     }
