@@ -7,4 +7,10 @@
             <p>{{ $message }}</p>
         </div>
     </div>
+
+    <script>
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 3000); // 3000 ms = 3 detik
+    </script>
 @endif
