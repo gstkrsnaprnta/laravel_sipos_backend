@@ -30,8 +30,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:3|unique:products',
             'price' => 'required|integer',
-            'stock' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
+            'category' => 'required|in:Food,Drink,Snack',
             'image' => 'required|image|mimes:png,jpg,jpeg',
         ]);
 
@@ -41,7 +40,6 @@ class ProductController extends Controller
         Product::create([
             'name' => $validated['name'],
             'price' => $validated['price'],
-            'stock' => $validated['stock'],
             'category' => $validated['category'],
             'image' => $filename,
         ]);
@@ -60,7 +58,6 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:3|unique:products,name,' . $id,
             'price' => 'required|integer',
-            'stock' => 'required|integer',
             'category' => 'required|in:food,drink,snack',
             'image' => 'nullable|image|mimes:png,jpg,jpeg',
         ]);

@@ -41,26 +41,26 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Stock</label>
                                 <input type="number" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}">
                                 @error('stock')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <label class="form-label">Category</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="food" class="selectgroup-input" checked="">
+                                        <input type="radio" name="category" value="Food" class="selectgroup-input" checked="">
                                         <span class="selectgroup-button">Food</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="drink" class="selectgroup-input">
+                                        <input type="radio" name="category" value="Drink" class="selectgroup-input">
                                         <span class="selectgroup-button">Drink</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="category" value="snack" class="selectgroup-input">
+                                        <input type="radio" name="category" value="Snack" class="selectgroup-input">
                                         <span class="selectgroup-button">Snack</span>
                                     </label>
                                 </div>

@@ -11,7 +11,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Products</h1>
+                <h1>Product Dashboard</h1>
                 <div class="section-header-button">
                     <a href="{{ route('product.create') }}" class="btn btn-primary">Add New</a>
                 </div>
@@ -22,8 +22,6 @@
                         @include('layouts.alert')
                     </div>
                 </div>
-               
-
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
