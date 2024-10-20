@@ -2,32 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+// Rute untuk halaman login
 Route::get('/', function () {
     return view('pages.auth.login');
 });
 
+// Rute yang membutuhkan autentikasi
 Route::middleware(['auth'])->group(function () {
+    // Rute untuk dashboard
     Route::get('/home', function() {
-        return view ('pages.dashboard');
-    })-> name ('home');
+        return view('pages.dashboard.dashboard');
+    })->name('home');
 
-    Route::resource('user', UserController::class);
-    Route::resource('product', \App\Http\Controllers\ProductController::class);
-
-
-
+    // Rute untuk produk (dapat diakses oleh pengguna yang diautentikasi)
+    Route::resource('product', ProductController::class);
 });
-

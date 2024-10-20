@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateUserRequest;
-
+use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // Menggunakan query builder dengan when dan paginate
-        $users = DB::table('users')
-            ->when($request->input('name'), function ($query, $name) {
-                return $query->where('name', 'like', '%' . $name . '%');
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+        $users = User::orderBy('id', 'desc')->paginate(10);
 
         return view('pages.users.index', compact('users'));
     }
@@ -31,28 +23,43 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi data yang diterima
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Menambahkan user baru
         $data = $request->all();
         $data['password'] = Hash::make($request->password);
-        \App\Models\User::create($data);
-        return redirect()->route('user.index')->with('success', 'User successfully created');
+        User::create($data);
+
+        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan');
     }
 
     public function edit($id)
     {
-        $user = \App\Models\User::findOrFail($id);
+        // Menampilkan halaman edit untuk pengguna yang dipilih
+        $user = User::findOrFail($id);
         return view('pages.users.edit', compact('user'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        // Validasi data yang diterima
         $data = $request->validated();
+
+        // Mengupdate data pengguna
         $user->update($data);
-        return redirect()->route('user.index')->with('success', 'User successfully updated');
+        
+        return redirect()->route('user.index')->with('success', 'User berhasil diupdate');
     }
 
     public function destroy(User $user)
     {
+        // Menghapus pengguna
         $user->delete();
-        return redirect()->route('user.index')->with('success', 'User successfully deleted');
+        return redirect()->route('user.index')->with('success', 'User berhasil dihapus');
     }
 }

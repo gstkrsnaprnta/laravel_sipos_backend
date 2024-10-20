@@ -23,12 +23,8 @@
                     <div class="breadcrumb-item">Users</div>
                 </div>
             </div>
-
             <div class="section-body">
                 <h2 class="section-title">Users</h2>
-
-
-
                 <div class="card">
                     <form action="{{ route('user.update', $user) }}" method="POST">
                         @csrf
@@ -84,28 +80,17 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="number" class="form-control" name="phone" value="{{ $user->phone }}">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Roles</label>
+                                <label class="form-label">Role</label>
                                 <div class="selectgroup w-100">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="admin" class="selectgroup-input"
+                                        <input type="radio" name="role" value="admin" class="selectgroup-input"
                                             @if ($user->roles == 'admin') checked @endif>
                                         <span class="selectgroup-button">Admin</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="staff" class="selectgroup-input"
-                                            @if ($user->roles == 'staff') checked @endif>
-                                        <span class="selectgroup-button">Staff</span>
-                                    </label>
-                                    <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="user" class="selectgroup-input"
-                                            @if ($user->roles == 'user') checked @endif>
-                                        <span class="selectgroup-button">User</span>
-                                    </label>
-
+                                        <input type="radio" name="role" value="kasir" class="selectgroup-input"
+                                            @if ($user->roles == 'kasir') checked @endif>
+                                        <span class="selectgroup-button">Kasir</span>
                                 </div>
                             </div>
                         </div>

@@ -3,14 +3,20 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User; // Tambahkan ini
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-        // Membuat 15 User Dummy
-        User::factory()->count(15)->create();
+        // Membuat pengguna admin
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin123'),
+            'role' => 'admin', // Menetapkan role sebagai admin
+        ]);
     }
 }
+
