@@ -58,7 +58,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|min:3|unique:products,name,' . $id,
             'price' => 'required|integer',
-            'category' => 'required|in:food,drink,snack',
+            'category' => 'required|in:Food,Drink,Snack',
             'image' => 'nullable|image|mimes:png,jpg,jpeg',
         ]);
 
