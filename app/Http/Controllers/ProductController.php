@@ -54,19 +54,33 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'name' => 'required|min:3|unique:products,name,' . $id,
-            'price' => 'required|integer',
-            'category' => 'required|in:Food,Drink,Snack',
-            'image' => 'nullable|image|mimes:png,jpg,jpeg',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|min:3|unique:products,name,' . $id,
+        'price' => 'required|integer',
+        'category' => 'required|in:Food,Drink,Snack',
+        'image' => 'nullable|image|mimes:png,jpg,jpeg',
+    ]);
 
-        $product = Product::findOrFail($id);
-        $product->update($validated);
+    $product = Product::findOrFail($id);
 
-        return redirect()->route('product.index')->with('success', 'Product successfully updated');
+    // Jika ada gambar baru yang diupload
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama
+        if ($product->image) {
+            Storage::delete('public/products/' . $product->image);
+        }
+        // Simpan gambar baru
+        $filename = time() . '.' . $request->image->extension();
+        $request->image->storeAs('public/products', $filename);
+        $validated['image'] = $filename;
     }
+
+    $product->update($validated);
+
+    return redirect()->route('product.index')->with('success', 'Product successfully updated');
+}
+
 
     public function destroy($id)
     {
