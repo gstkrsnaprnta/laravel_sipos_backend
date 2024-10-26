@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 
 // Rute untuk halaman login
 Route::get('/', function () {
@@ -18,4 +19,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Rute untuk produk (dapat diakses oleh pengguna yang diautentikasi)
     Route::resource('product', ProductController::class);
+
+    Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
 });

@@ -2,10 +2,6 @@
 
 @section('title', 'Products')
 
-@push('style')
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{ asset('library/selectric/public/selectric.css') }}">
-@endpush
 
 @section('main')
     <div class="main-content">
@@ -89,9 +85,6 @@
 @endsection
 
 @push('scripts')
-    <!-- JS Libraies -->
-    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
-
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
+    <!-- No JS required for this page -->
 @endpush
+
