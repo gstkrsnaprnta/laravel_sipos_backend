@@ -1,6 +1,6 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand" >
+        <div class="sidebar-brand">
             <strong>SIPOS</strong> <!-- Menambahkan <strong> untuk bold -->
         </div>
         <div class="sidebar-brand sidebar-brand-sm">

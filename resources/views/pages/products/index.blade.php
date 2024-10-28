@@ -18,35 +18,42 @@
                     </div>
                 </div>
                 <div class="row mt-4">
-                    @foreach ($products as $product)
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>{{ $product->name }}</h4>
-                                </div>
+                    @foreach ($products as $index => $product)
+                        @if ($index % 6 == 0 && $index > 0) 
+                            <!-- Close the previous row after 6 items (4 + 2) -->
+                            </div><div class="row mt-4">
+                        @endif
+
+                        @if ($index < 4 || ($index >= 6 && $index < 10)) 
+                            <div class="col-3"> <!-- For the first 4 and next 4 products -->
+                        @elseif ($index == 4 || $index == 5) 
+                            <div class="col-6"> <!-- For the next 2 products -->
+                        @else 
+                            <div class="col-12"> <!-- For the last product -->
+                        @endif
+                            <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    @if ($product->image)
-                                        <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid img-thumbnail mb-3" style="height: 150px; object-fit: cover;">
-                                    @else
-                                        <div class="badge badge-danger">No Image</div>
-                                    @endif
-                                    <p class="mt-2"><strong>Category:</strong> {{ $product->category }}</p>
-                                    <p><strong>Price:</strong> ${{ number_format($product->price, 2) }}</p>
-                                    <p><strong>Created At:</strong> 
-                                        @if ($product->created_at)
-                                            {{ \Carbon\Carbon::parse($product->created_at)->format('d M Y') }}
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                    <p class="card-text">Category: {{ $product->category }}</p>
+                                    <p class="card-text">Price: {{ $product->price }}</p>
+                                    <div class="mb-2">
+                                        @if ($product->image)
+                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt=""
+                                                 width="100px" class="img-thumbnail">
                                         @else
-                                            N/A
+                                            <span class="badge badge-danger">No Image</span>
                                         @endif
-                                    </p>
+                                    </div>
+                                    <p class="card-text">Created At: {{ $product->created_at }}</p>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-sm btn-info mr-2">
+                                        <a href='{{ route('product.edit', $product->id) }}'
+                                           class="btn btn-sm btn-info btn-icon">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
-                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="d-inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-sm btn-danger confirm-delete">
+                                        <form action="{{ route('product.destroy', $product->id) }}" method="POST" class="ml-2">
+                                            <input type="hidden" name="_method" value="DELETE" />
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                            <button class="btn btn-sm btn-danger btn-icon confirm-delete">
                                                 <i class="fas fa-times"></i> Delete
                                             </button>
                                         </form>

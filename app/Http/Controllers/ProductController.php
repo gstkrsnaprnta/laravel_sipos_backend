@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         $products = DB::table('products')
         ->orderBy('created_at', 'desc')
-        ->paginate(10);
+        ->paginate(15);
     
     return view('pages.products.index', compact('products'));
     
