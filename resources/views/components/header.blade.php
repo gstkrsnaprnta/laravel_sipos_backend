@@ -1,5 +1,5 @@
 <div class="navbar-bg"></div>
-<nav class="navbar navbar-expand-lg main-navbar">
+<nav class="navbar navbar-expand-lg main-navbar" >
     <ul class="navbar-nav ml-auto">
         <li class="dropdown"><a href="#"
                 data-toggle="dropdown"
